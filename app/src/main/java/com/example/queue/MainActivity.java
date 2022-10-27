@@ -26,11 +26,9 @@ public class MainActivity extends AppCompatActivity {
         btGuardar=findViewById(R.id.btGuardar);
         btMostrar=findViewById(R.id.btMostrar);
         btQuitar=findViewById(R.id.btQuitar);
-
         queue= new Queue();
-        queue.add(2);
-        queue.printl();
-        queue.remove();
+
+
 
         btGuardar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -43,22 +41,39 @@ public class MainActivity extends AppCompatActivity {
                     int aux=Integer.parseInt(input);
                     queue.add(aux);//se supone que aqui agrega
                     Log.i("log",aux+"");
-                    queue.printl();
+                    Toast.makeText(getApplicationContext(),"Dato ingresado "+aux, Toast.LENGTH_SHORT).show();
+                   // queue.printl();
                     etUsuario.setText("");
                 }
-
             }
         });
+
+
         btQuitar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                String input = etUsuario.getText().toString().trim();
+                if (input.equals(""))
+                    Toast.makeText(getApplicationContext(), "ingresa un dato", Toast.LENGTH_SHORT).show();
+                else {
+                    int aux = Integer.parseInt(input);
+                    queue.remove();
 
+                }
             }
         });
 
         btMostrar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                String input=etUsuario.getText().toString().trim();
+                if (input.equals(""))
+                    Toast.makeText(getApplicationContext(), "ingresa un dato", Toast.LENGTH_SHORT).show();
+                else {
+                    int aux = Integer.parseInt(input);
+                    queue.printl();
+
+                }
 
             }
         });
