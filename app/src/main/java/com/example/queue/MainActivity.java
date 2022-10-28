@@ -17,6 +17,7 @@ public class MainActivity extends AppCompatActivity {
     private Button btMostrar;
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,6 +28,8 @@ public class MainActivity extends AppCompatActivity {
         btMostrar=findViewById(R.id.btMostrar);
         btQuitar=findViewById(R.id.btQuitar);
         queue= new Queue();
+
+
 
 
 
@@ -49,6 +52,9 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
+
+
+
         btQuitar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -57,25 +63,49 @@ public class MainActivity extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(), "ingresa un dato", Toast.LENGTH_SHORT).show();
                 else {
                     int aux = Integer.parseInt(input);
-                    queue.remove();
+                    //queue.remove();
+                    queue.printl();
 
                 }
             }
         });
+
+
+
+
 
         btMostrar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 String input=etUsuario.getText().toString().trim();
+
                 if (input.equals(""))
-                    Toast.makeText(getApplicationContext(), "ingresa un dato", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "ingresa un dato para buscar", Toast.LENGTH_SHORT).show();
                 else {
                     int aux = Integer.parseInt(input);
-                    queue.printl();
+                    boolean encontro=false;
+                    int contador=1;
+                    //queue.printl();
 
+                    QueueNode buscar= queue.getFirst();
+                    while (encontro==false){
+                        buscar=buscar.getNext();
+
+                    if (input.equals(buscar) ){
+                        Log.i("log", "el numero sí se encontro y esta  la  posicion"+contador);
+                        encontro=true;
+                    }else {
+                        //QueueNode buscar= queue.getFirst();
+                        // buscar=buscar.getNext();
+
+                         contador++;
+                    }
+                    }
                 }
-
             }
         });
+
+
+
     }
 }

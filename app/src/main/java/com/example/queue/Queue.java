@@ -55,7 +55,6 @@ public class Queue {
             if (first==null)
                 last = null;
 
-
             return aux.getData();
 
         }}
