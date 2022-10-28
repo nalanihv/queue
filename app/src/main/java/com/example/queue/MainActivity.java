@@ -41,8 +41,6 @@ public class MainActivity extends AppCompatActivity {
                 if( input.equals("") )
                     Toast.makeText(getApplicationContext(),"ingresa un dato", Toast.LENGTH_SHORT).show();
                 else{
-
-
                     int aux=Integer.parseInt(input);
                     queue.add(aux);
                     Toast.makeText(getApplicationContext(),"Dato ingresado "+aux, Toast.LENGTH_SHORT).show();
@@ -52,15 +50,11 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
-
-
-
         btAtender.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(getApplicationContext(),"ID del cliente que se atiende ", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(),"ID del cliente que se atiende "+queue.getFirst(), Toast.LENGTH_SHORT).show();
                 queue.remove();
-
             }
         });
 
@@ -68,20 +62,6 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 queue.printl();
-
-               String input=etUsuario.getText().toString().trim();
-               //Queue  queue= new Queue();
-
-
-                    boolean encontro=false;
-                    String result="";
-
-
-                    QueueNode buscar= queue.getFirst();
-                    while (encontro==false){
-                        buscar=buscar.getNext();
-
-                }
             }
         });
 
