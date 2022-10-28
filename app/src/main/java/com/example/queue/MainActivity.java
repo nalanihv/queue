@@ -12,8 +12,8 @@ import android.widget.Toast;
 public class MainActivity extends AppCompatActivity {
     private  Queue queue;
     private EditText etUsuario;
-    private Button btGuardar;
-    private Button btQuitar;
+    private Button btAgregar;
+    private Button btAtender;
     private Button btMostrar;
 
 
@@ -24,16 +24,16 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         etUsuario=findViewById(R.id.etUsuario);
-        btGuardar=findViewById(R.id.btGuardar);
+        btAgregar=findViewById(R.id.btGuardar);
         btMostrar=findViewById(R.id.btMostrar);
-        btQuitar=findViewById(R.id.btQuitar);
+        btAtender=findViewById(R.id.btQuitar);
         Queue queue= new Queue();
 
 
 
 
 
-        btGuardar.setOnClickListener(new View.OnClickListener() {
+        btAgregar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 String input=etUsuario.getText().toString().trim();
@@ -41,11 +41,11 @@ public class MainActivity extends AppCompatActivity {
                 if( input.equals("") )
                     Toast.makeText(getApplicationContext(),"ingresa un dato", Toast.LENGTH_SHORT).show();
                 else{
+
+
                     int aux=Integer.parseInt(input);
-                    queue.add(aux);//se supone que aqui agrega
-                    Log.i("log",aux+"");
+                    queue.add(aux);
                     Toast.makeText(getApplicationContext(),"Dato ingresado "+aux, Toast.LENGTH_SHORT).show();
-                   // queue.printl();
                     etUsuario.setText("");
                 }
             }
@@ -55,53 +55,32 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-        btQuitar.setOnClickListener(new View.OnClickListener() {
+        btAtender.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String input = etUsuario.getText().toString().trim();
-                if (input.equals(""))
-                    Toast.makeText(getApplicationContext(), "ingresa un dato", Toast.LENGTH_SHORT).show();
-                else {
-                    //queue.remove();
-                    queue.printl();
+                Toast.makeText(getApplicationContext(),"ID del cliente que se atiende ", Toast.LENGTH_SHORT).show();
+                queue.remove();
 
-                }
             }
         });
-
-
-
-
 
         btMostrar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String input=etUsuario.getText().toString().trim();
+                queue.printl();
+
+               String input=etUsuario.getText().toString().trim();
                //Queue  queue= new Queue();
 
-                if (input.equals(""))
-                    Toast.makeText(getApplicationContext(), "ingresa un dato para buscar", Toast.LENGTH_SHORT).show();
-                else {
 
                     boolean encontro=false;
-                    int contador=1;
                     String result="";
+
 
                     QueueNode buscar= queue.getFirst();
                     while (encontro==false){
-                        result+=buscar.getData();
                         buscar=buscar.getNext();
 
-                    if (input.equals(buscar) ){
-                        Log.i("log", "el numero sí se encontro y esta  la  posicion"+contador);
-                        encontro=true;
-                    }else {
-                        //QueueNode buscar= queue.getFirst();
-                        // buscar=buscar.getNext();
-
-                         contador++;
-                    }
-                    }
                 }
             }
         });

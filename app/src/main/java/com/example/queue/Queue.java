@@ -1,10 +1,13 @@
 package com.example.queue;
 
 import android.util.Log;
+import android.widget.Toast;
 
 public class Queue {
     private QueueNode first;
     private QueueNode last;
+    private int contador=0;
+    private boolean igual=false;
 
     public Queue() {//por que la primera vez estan vacios -Se inicializa
         first=null;
@@ -21,17 +24,34 @@ public class Queue {
 
     public void add(int data){
         QueueNode node=new QueueNode(data);//agrega valores
+        QueueNode buscar= first;
         if (node==null){
             Log.i("log","Queue overflow");
         }else {
-            if(first==null){
-                first=node;//el primero siempre va a tener el mismo valor agregando
+
+
+            if(contador<=8){
+
+                if(first==null){
+                    first=node;
+                    contador++;
+                }else{
+
+                    while (buscar.getNext()!=null){
+                        contador++;
+                        buscar= buscar.getNext();
+
+                    }
+
+
+
+                    last.setNext(node);
+                }
+                last=node;
+
             }else {
-                last.setNext(node);//el dato que entra se enlaza con el set el enlace para que apunte al ultimo de ese momento , hasta
-                //que se actualiza en la siguente linea. Al ultimo ponerle el que sigue despues de el.
-            }
-            last=node;//el ultimo que llegue es el ultimo
-        }
+                Log.i("log","la fila alcanzó su límite, el cliente no puede ser atendido");
+            }}
     }
 
     public void printl(){
@@ -54,6 +74,7 @@ public class Queue {
             first=first.getNext();//el primero va hacer ahora el enlace que tiene
             if (first==null)
                 last = null;
+            contador--;
 
             return aux.getData();
 

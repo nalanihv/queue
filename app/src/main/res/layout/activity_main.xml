@@ -18,14 +18,14 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/etUsuario"
-        android:text="Guardar" />
+        android:text="Agregar" />
 
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/btGuardar"
         android:id="@+id/btQuitar"
-        android:text="quitar"
+        android:text="Atender"
         />
 
     <Button
