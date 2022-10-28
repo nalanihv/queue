@@ -49,7 +49,6 @@ public class Queue {
                         last=node;
                     }
                 }
-
             }else {
                 Log.i("log","la fila alcanzó su límite, el cliente no puede ser atendido");
             }}

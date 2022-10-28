@@ -17,8 +17,6 @@ public class MainActivity extends AppCompatActivity {
     private Button btMostrar;
 
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,7 +27,6 @@ public class MainActivity extends AppCompatActivity {
         btMostrar=findViewById(R.id.btMostrar);
         btAtender=findViewById(R.id.btQuitar);
         Queue queue= new Queue();
-
 
 
 
