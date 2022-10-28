@@ -32,6 +32,7 @@ public class Queue {
                 if(first==null){
                     first=node;
                     contador++;
+                    last=node;
                 }else{
                     while (buscar.getNext()!=null){
                         if (buscar.getData()==node.getData()){
@@ -41,13 +42,14 @@ public class Queue {
                         }
                         buscar= buscar.getNext();
                     }
-                 //   if (igual!=true){
-                   //     Log.i("log","entro por igual false");
+                    if (igual!=true){
+                       Log.i("log","entro por igual false");
                         contador++;
                         last.setNext(node);
-                    //}
+                        last=node;
+                    }
                 }
-                last=node;
+
             }else {
                 Log.i("log","la fila alcanzó su límite, el cliente no puede ser atendido");
             }}
