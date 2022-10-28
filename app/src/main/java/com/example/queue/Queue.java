@@ -1,7 +1,7 @@
 package com.example.queue;
 
 import android.util.Log;
-import android.widget.Toast;
+
 
 public class Queue {
     private QueueNode first;
@@ -17,8 +17,8 @@ public class Queue {
 
     public QueueNode getFirst() {
         return first;}
-    public QueueNode getLast() {
-        return last;}
+    //public QueueNode getLast() {
+       // return last;}
 
     public void add(int data){
         QueueNode node=new QueueNode(data);//agrega valores

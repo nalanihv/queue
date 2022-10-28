@@ -18,6 +18,7 @@ public class MainActivity extends AppCompatActivity {
 
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,7 +29,6 @@ public class MainActivity extends AppCompatActivity {
         btMostrar=findViewById(R.id.btMostrar);
         btAtender=findViewById(R.id.btQuitar);
         Queue queue= new Queue();
-
 
 
 
@@ -58,9 +58,12 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+
+
         btMostrar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 queue.printl();
             }
         });
