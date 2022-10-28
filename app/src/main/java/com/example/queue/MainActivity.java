@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
         btGuardar=findViewById(R.id.btGuardar);
         btMostrar=findViewById(R.id.btMostrar);
         btQuitar=findViewById(R.id.btQuitar);
-        queue= new Queue();
+        Queue queue= new Queue();
 
 
 
@@ -62,7 +62,6 @@ public class MainActivity extends AppCompatActivity {
                 if (input.equals(""))
                     Toast.makeText(getApplicationContext(), "ingresa un dato", Toast.LENGTH_SHORT).show();
                 else {
-                    int aux = Integer.parseInt(input);
                     //queue.remove();
                     queue.printl();
 
@@ -78,17 +77,19 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 String input=etUsuario.getText().toString().trim();
+               //Queue  queue= new Queue();
 
                 if (input.equals(""))
                     Toast.makeText(getApplicationContext(), "ingresa un dato para buscar", Toast.LENGTH_SHORT).show();
                 else {
-                    int aux = Integer.parseInt(input);
+
                     boolean encontro=false;
                     int contador=1;
-                    //queue.printl();
+                    String result="";
 
                     QueueNode buscar= queue.getFirst();
                     while (encontro==false){
+                        result+=buscar.getData();
                         buscar=buscar.getNext();
 
                     if (input.equals(buscar) ){
