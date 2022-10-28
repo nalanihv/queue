@@ -43,7 +43,7 @@ public class Queue {
                         buscar= buscar.getNext();
                     }
                     if (igual!=true){
-                       Log.i("log","entro por igual false");
+                       //Log.i("log","entro por igual false");
                         contador++;
                         last.setNext(node);
                         last=node;
