@@ -17,6 +17,8 @@ public class MainActivity extends AppCompatActivity {
     private Button btMostrar;
 
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,6 +29,9 @@ public class MainActivity extends AppCompatActivity {
         btMostrar=findViewById(R.id.btMostrar);
         btAtender=findViewById(R.id.btQuitar);
         Queue queue= new Queue();
+        BinarySerch objeto= new BinarySerch();
+
+
 
 
 
@@ -41,6 +46,7 @@ public class MainActivity extends AppCompatActivity {
                     int aux=Integer.parseInt(input);
                     queue.add(aux);
                     Toast.makeText(getApplicationContext(),"Dato ingresado "+aux, Toast.LENGTH_SHORT).show();
+                    Log.i("log","dato Ingresado: "+aux);
                     etUsuario.setText("");
                 }
             }
@@ -51,6 +57,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Toast.makeText(getApplicationContext(),"ID del cliente que se atiende "+queue.getFirst(), Toast.LENGTH_SHORT).show();
+                Log.i("log"," Id del cliente antendido:  "+queue.getFirst());
                 queue.remove();
             }
         });
@@ -60,7 +67,7 @@ public class MainActivity extends AppCompatActivity {
         btMostrar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                Log.i("log","fila actual: ");
                 queue.printl();
             }
         });

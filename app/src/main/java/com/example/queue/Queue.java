@@ -28,7 +28,7 @@ public class Queue {
         if (node==null){
             Log.i("log","Queue overflow");
         }else {
-            if(contador<=8){
+            if(contador<=7){
                 if(first==null){
                     first=node;
                     contador++;
