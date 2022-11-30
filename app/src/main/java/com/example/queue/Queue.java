@@ -129,12 +129,18 @@ public class Queue {
            // auxCont=0;
                 if (nodeSerch.getData()==valorCentro.getData()){
                     Log.i("log", "posicion del dato encontrado  "+centro);
+                    //auxCont=0;
+                    //bajo=0;
+                    //alto=contador;
                     break;
                 }
 
 
                 else if (nodeSerch.getData()<valorCentro.getData())
                     alto=centro-1; //checar estos
+                    //auxCont=0;
+                    
+            
 
                 else
                     bajo=centro+1;
