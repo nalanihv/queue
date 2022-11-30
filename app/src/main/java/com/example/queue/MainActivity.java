@@ -60,10 +60,10 @@ public class MainActivity extends AppCompatActivity {
                 if (input.equals(""))
                     Toast.makeText(getApplicationContext(), "ingrese un valor a buscar", Toast.LENGTH_SHORT).show();
                 else {
+                    int aux=Integer.parseInt(input);
+                    queue.serch(aux);
 
-                   // queue.serch();
-                    Log.i("log", " Id del cliente antendido:  " + queue.getFirst());
-                    queue.remove();
+
                 }
             }
         });

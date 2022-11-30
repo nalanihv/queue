@@ -13,6 +13,7 @@ public class Queue {
     public Queue() {
         first=null;
         last=null;
+        centro=contador/2;
     }
 
     public QueueNode getFirst() {
@@ -28,6 +29,7 @@ public class Queue {
     public void add(int data){
         QueueNode node = new QueueNode( data );
         QueueNode aux= first;
+        contador++;
 
         if( node == null )
             Log.i("log"," over flow");
@@ -69,7 +71,7 @@ public class Queue {
                        Log.i("log","auxiliar  "+aux);
                 }
             }
-            contador++;
+
         }
     }}
 
@@ -81,6 +83,7 @@ public class Queue {
             aux=aux.getNext();
         }
         Log.i("log",""+result);
+        Log.i("log","contador : "+contador);
     }
 
     public int remove(){
@@ -95,7 +98,48 @@ public class Queue {
             return aux.getData();
         }}
 
-    public int serch(){
-        return 0;
+    public void serch(int buscar){
+        int bajo=0,alto=contador,auxCont=0;
+        QueueNode aux=first;
+        QueueNode nodeSerch= new QueueNode(buscar);
+        QueueNode valorCentro=null;
+
+        while (bajo<=alto ){
+            centro=(bajo+alto)/2;
+            Log.i("log","centro poscion : "+centro);
+
+
+        while (aux!=null){
+            auxCont++;
+            Log.i("log","contador auxiliar : "+auxCont);
+            Log.i("log"," auxiliar : "+aux);
+
+            if (auxCont==centro){
+                valorCentro=aux;
+                Log.i("log","entro a centro ");
+                Log.i("log","su valor:   "+valorCentro);
+                break;
+
+                //si centro es mayor que bajo o alto, depende si se resetean las variables, tomar en cuenta eso
+
+            }
+            aux=aux.getNext();
+        }
+           // auxCont=0;
+                if (nodeSerch.getData()==valorCentro.getData()){
+                    Log.i("log", "posicion del dato encontrado  "+centro);
+                    break;
+                }
+
+
+                else if (nodeSerch.getData()<valorCentro.getData())
+                    alto=centro-1; //checar estos
+
+                else
+                    bajo=centro+1;
+
+            Log.i("log","alto"+alto+"  y bajo  "+bajo);
+            }
+
     }
 }
