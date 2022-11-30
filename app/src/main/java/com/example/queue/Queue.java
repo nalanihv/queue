@@ -1,59 +1,77 @@
 package com.example.queue;
 
 import android.util.Log;
-
+//el ultimo dato ingresado es quien tiene el enlace nulo
 
 public class Queue {
     private QueueNode first;
     private QueueNode last;
-    private int contador=0;
-    private boolean igual;
+    private  int contador;
+    private int centro;
 
-    public Queue() {//por que la primera vez estan vacios -Se inicializa
+
+    public Queue() {
         first=null;
         last=null;
-        //first=last=null;
     }
 
     public QueueNode getFirst() {
         return first;}
-    //public QueueNode getLast() {
-       // return last;}
 
-    public void add(int data){
-        QueueNode node=new QueueNode(data);//agrega valores
-        QueueNode buscar= first;
-        igual=false;
-
-        if (node==null){
-            Log.i("log","Queue overflow");
-        }else {
-            if(contador<=7){
-                if(first==null){
-                    first=node;
-                    contador++;
-                    last=node;
-                }else{
-                    while (buscar.getNext()!=null){
-                        if (buscar.getData()==node.getData()){
-                            Log.i("log","dato repetido");
-                            igual=true;
-                            break ;
-                        }
-                        buscar= buscar.getNext();
-                    }
-                    if (igual!=true){
-                       //Log.i("log","entro por igual false");
-                        contador++;
-                        last.setNext(node);
-                        last=node;
-                    }
-                }
-            }else {
-                Log.i("log","la fila alcanzó su límite, el cliente no puede ser atendido");
-            }}
+    public void setFirst(QueueNode first) {
+        this.first = first;
     }
 
+    public QueueNode getLast() {
+        return last;}
+
+    public void add(int data){
+        QueueNode node = new QueueNode( data );
+        QueueNode aux= first;
+
+        if( node == null )
+            Log.i("log"," over flow");
+
+        else{
+
+            if( first == null ){
+                first = node;
+                last = node;
+            }
+            else{
+
+                if (node.getData()>=last.getData()){ //si dato ingresado mayor al ultimo de la fila
+                    last.setNext(node);
+                    last=node;
+
+                }
+               else if (node.getData()<=aux.getData()){ //si es menor
+
+                   node.setNext(first); //el enlace del dato ingresado es el primero
+                    setFirst(node);
+
+               }
+               else {
+
+                    QueueNode posterior= getFirst().getNext();
+
+                   while (aux!=null){
+                       if (node.getData()<=posterior.getData()) {
+                           node.setNext(posterior);
+                           aux.setNext(node);
+                           break;
+                       }
+
+                       posterior=posterior.getNext();
+                       aux=aux.getNext();
+
+                       Log.i("log","posterioir "+posterior);
+                       Log.i("log","auxiliar  "+aux);
+                }
+            }
+            contador++;
+        }
+    }}
 
     public void printl(){
         String result="";
@@ -65,9 +83,6 @@ public class Queue {
         Log.i("log",""+result);
     }
 
-
-
-
     public int remove(){
 
         if (first==null){
@@ -77,7 +92,10 @@ public class Queue {
             first=first.getNext();
             if (first==null)
                 last = null;
-            contador--;
             return aux.getData();
         }}
+
+    public int serch(){
+        return 0;
+    }
 }

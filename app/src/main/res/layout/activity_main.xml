@@ -25,7 +25,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/btGuardar"
         android:id="@+id/btQuitar"
-        android:text="Atender"
+        android:text="Ordenar"
         />
 
     <Button

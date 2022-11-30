@@ -13,7 +13,7 @@ public class MainActivity extends AppCompatActivity {
     private  Queue queue;
     private EditText etUsuario;
     private Button btAgregar;
-    private Button btAtender;
+    private Button btBuscar;
     private Button btMostrar;
 
 
@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
         etUsuario=findViewById(R.id.etUsuario);
         btAgregar=findViewById(R.id.btGuardar);
         btMostrar=findViewById(R.id.btMostrar);
-        btAtender=findViewById(R.id.btQuitar);
+        btBuscar=findViewById(R.id.btQuitar);
         Queue queue= new Queue();
         BinarySerch objeto= new BinarySerch();
 
@@ -45,7 +45,6 @@ public class MainActivity extends AppCompatActivity {
                 else{
                     int aux=Integer.parseInt(input);
                     queue.add(aux);
-                    Toast.makeText(getApplicationContext(),"Dato ingresado "+aux, Toast.LENGTH_SHORT).show();
                     Log.i("log","dato Ingresado: "+aux);
                     etUsuario.setText("");
                 }
@@ -53,12 +52,19 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
-        btAtender.setOnClickListener(new View.OnClickListener() {
+        btBuscar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(getApplicationContext(),"ID del cliente que se atiende "+queue.getFirst(), Toast.LENGTH_SHORT).show();
-                Log.i("log"," Id del cliente antendido:  "+queue.getFirst());
-                queue.remove();
+                String input = etUsuario.getText().toString().trim();
+
+                if (input.equals(""))
+                    Toast.makeText(getApplicationContext(), "ingrese un valor a buscar", Toast.LENGTH_SHORT).show();
+                else {
+
+                   // queue.serch();
+                    Log.i("log", " Id del cliente antendido:  " + queue.getFirst());
+                    queue.remove();
+                }
             }
         });
 
@@ -67,12 +73,13 @@ public class MainActivity extends AppCompatActivity {
         btMostrar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Log.i("log","fila actual: ");
+                Log.i("log","fila actual:  ");
                 queue.printl();
             }
         });
-
-
-
     }
+
+
+
+
 }
