@@ -105,6 +105,7 @@ public class Queue {
         QueueNode valorCentro=null;
 
         while (bajo<=alto ){
+
             centro=(bajo+alto)/2;
             Log.i("log","centro poscion : "+centro);
 

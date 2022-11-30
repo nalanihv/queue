@@ -18,14 +18,14 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/etUsuario"
-        android:text="Agregar" />
+        android:text="Agregar y Ordenar" />
 
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/btGuardar"
         android:id="@+id/btQuitar"
-        android:text="Ordenar"
+        android:text="Busqueda Binaria"
         />
 
     <Button
