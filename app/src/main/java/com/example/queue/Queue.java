@@ -2,7 +2,6 @@ package com.example.queue;
 
 import android.util.Log;
 //el ultimo dato ingresado es quien tiene el enlace nulo
-
 public class Queue {
     private QueueNode first;
     private QueueNode last;
@@ -13,7 +12,7 @@ public class Queue {
     public Queue() {
         first=null;
         last=null;
-        centro=contador/2;
+        centro=0;
     }
 
     public QueueNode getFirst() {
@@ -33,7 +32,6 @@ public class Queue {
 
         if( node == null )
             Log.i("log"," over flow");
-
         else{
 
             if( first == null ){
@@ -54,21 +52,16 @@ public class Queue {
 
                }
                else {
-
                     QueueNode posterior= getFirst().getNext();
-
                    while (aux!=null){
                        if (node.getData()<=posterior.getData()) {
                            node.setNext(posterior);
                            aux.setNext(node);
                            break;
                        }
-
                        posterior=posterior.getNext();
                        aux=aux.getNext();
 
-                       Log.i("log","posterioir "+posterior);
-                       Log.i("log","auxiliar  "+aux);
                 }
             }
 
@@ -83,7 +76,7 @@ public class Queue {
             aux=aux.getNext();
         }
         Log.i("log",""+result);
-        Log.i("log","contador : "+contador);
+        Log.i("log","Cantidad de datos : "+contador);
     }
 
     public int remove(){
@@ -98,55 +91,46 @@ public class Queue {
             return aux.getData();
         }}
 
-    public void serch(int buscar){
-        int bajo=0,alto=contador,auxCont=0;
-        QueueNode aux=first;
+    public int serch(int buscar){
+
+        int inf=0, sup =contador,auxCont=0;
+
         QueueNode nodeSerch= new QueueNode(buscar);
-        QueueNode valorCentro=null;
+        QueueNode valorCentro = new QueueNode( centro );
+        QueueNode aux=first;
 
-        while (bajo<=alto ){
+        while (inf<= sup){
 
-            centro=(bajo+alto)/2;
-            Log.i("log","centro poscion : "+centro);
-
+            centro=((inf+ sup)/2);
 
         while (aux!=null){
+
             auxCont++;
-            Log.i("log","contador auxiliar : "+auxCont);
-            Log.i("log"," auxiliar : "+aux);
-
+          //  Log.i("log","valor auxiliar antes de comparar "+auxCont);
+            //Log.i("log","valor de auxiliar de dato  "+aux.getData());
             if (auxCont==centro){
-                valorCentro=aux;
-                Log.i("log","entro a centro ");
-                Log.i("log","su valor:   "+valorCentro);
+                valorCentro.setData(aux.getData());
+               // Log.i("log","valor centro "+valorCentro);
+                aux=aux.getNext();
+                //valorCentro.setData(aux.getData());
                 break;
-
-                //si centro es mayor que bajo o alto, depende si se resetean las variables, tomar en cuenta eso
-
             }
             aux=aux.getNext();
         }
-           // auxCont=0;
+         //no se esta cambiando el dato del centro
+            //ahora centro es mayor por uno, qn save pq
+
                 if (nodeSerch.getData()==valorCentro.getData()){
-                    Log.i("log", "posicion del dato encontrado  "+centro);
-                    //auxCont=0;
-                    //bajo=0;
-                    //alto=contador;
-                    break;
+                    return centro;
                 }
-
-
-                else if (nodeSerch.getData()<valorCentro.getData())
-                    alto=centro-1; //checar estos
-                    //auxCont=0;
-                    
-            
-
+                else if (nodeSerch.getData()<valorCentro.getData()){
+                    sup =centro-1;
+                    auxCont=0;
+                    aux=first;
+                }
                 else
-                    bajo=centro+1;
-
-            Log.i("log","alto"+alto+"  y bajo  "+bajo);
+                    inf=centro+1;
             }
-
+        return -1;
     }
 }

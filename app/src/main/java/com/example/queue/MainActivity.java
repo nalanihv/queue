@@ -29,9 +29,7 @@ public class MainActivity extends AppCompatActivity {
         btMostrar=findViewById(R.id.btMostrar);
         btBuscar=findViewById(R.id.btQuitar);
         Queue queue= new Queue();
-        BinarySerch objeto= new BinarySerch();
-
-
+        //BinarySerch objeto= new BinarySerch();
 
 
 
@@ -61,13 +59,11 @@ public class MainActivity extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(), "ingrese un valor a buscar", Toast.LENGTH_SHORT).show();
                 else {
                     int aux=Integer.parseInt(input);
-                    queue.serch(aux);
-
-
+                    Log.i("log","Dato a buscar "+aux);
+                    Log.i("log","Posicion del dato "+queue.serch(aux));
                 }
             }
         });
-
 
 
         btMostrar.setOnClickListener(new View.OnClickListener() {
